@@ -1,110 +1,664 @@
 <!DOCTYPE html>
-<!--
-  Página principal do portfólio
-  - Estrutura simples: header (navegação), main (entrada com texto e imagem) e footer
-  - Pequenas "bolinhas" (peixes) são elementos posicionados dinamicamente pelo `script.js`
-  - As imagens responsivas para a seção de foto estão dentro de `<picture>` para funcionar corretamente
--->
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <!-- Metadados básicos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conceição Ramos</title>
+    <title>Conceição Ramos | Desenvolvedora Front-end</title>
+    <meta name="description" content="Portfólio de Conceição Ramos, Desenvolvedora Front-end. Projetos web modernos, responsivos e acessíveis com HTML5, CSS3 e JavaScript.">
+    
+    <!-- Favicon -->
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <!-- Link para estilos principais -->
-    <link rel="stylesheet" href="styles.css">
 
+    <!-- Google Fonts: Outfit (Títulos) e Plus Jakarta Sans (Texto & UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Folha de Estilos Principal -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- HEADER: navegação principal -->
-    <header>
-        <div id="navbar">
-            <nav>
-                <!-- links de navegação simples apontando para páginas estáticas -->
-                <a href="index.html">Home</a>
-                <!--Lista oculta-->
+    <!-- Fundo decorativo oceânico com iluminação suave -->
+    <div class="ocean-ambient" aria-hidden="true">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <!-- Camada de Algas Marinhas no Fundo do Mar -->
+    <div class="seaweed-container" aria-hidden="true">
+        <svg class="seaweed-svg" viewBox="0 0 1440 280" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="kelpGrad1" x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" stop-color="#020024" stop-opacity="0.95" />
+                    <stop offset="35%" stop-color="#090979" stop-opacity="0.85" />
+                    <stop offset="75%" stop-color="#0084b4" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#00d4ff" stop-opacity="0.95" />
+                </linearGradient>
+                <linearGradient id="kelpGrad2" x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" stop-color="#020024" stop-opacity="0.95" />
+                    <stop offset="40%" stop-color="#064e3b" stop-opacity="0.75" />
+                    <stop offset="75%" stop-color="#0d9488" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0.9" />
+                </linearGradient>
+                <linearGradient id="kelpGrad3" x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" stop-color="#020024" stop-opacity="0.95" />
+                    <stop offset="45%" stop-color="#1e1b4b" stop-opacity="0.85" />
+                    <stop offset="80%" stop-color="#0284c7" stop-opacity="0.85" />
+                    <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.95" />
+                </linearGradient>
+                <linearGradient id="seabedGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="transparent" />
+                    <stop offset="100%" stop-color="#020024" stop-opacity="0.85" />
+                </linearGradient>
+            </defs>
+
+            <!-- Base suave do leito marinho -->
+            <path d="M0,280 Q360,250 720,265 T1440,255 L1440,280 L0,280 Z" fill="url(#seabedGrad)" />
+
+            <!-- Algas Cluster 1 (Canto Esquerdo) -->
+            <g class="alga-group sway-slow" style="transform-origin: 70px 280px;">
+                <path d="M70,280 Q50,200 85,135 Q105,75 65,15 Q85,75 65,135 Q45,200 70,280 Z" fill="url(#kelpGrad1)" />
+                <path d="M85,135 Q125,115 115,85 Q85,105 85,135 Z" fill="url(#kelpGrad1)" />
+                <path d="M65,185 Q25,165 35,135 Q65,155 65,185 Z" fill="url(#kelpGrad1)" />
+            </g>
+            <g class="alga-group sway-fast" style="transform-origin: 125px 280px;">
+                <path d="M125,280 Q150,205 115,145 Q95,85 135,30 Q110,90 130,145 Q155,205 125,280 Z" fill="url(#kelpGrad2)" />
+                <path d="M115,145 Q75,125 85,95 Q115,115 115,145 Z" fill="url(#kelpGrad2)" />
+                <path d="M130,195 Q170,175 160,145 Q130,165 130,195 Z" fill="url(#kelpGrad2)" />
+            </g>
+            <g class="alga-group sway-medium" style="transform-origin: 180px 280px;">
+                <path d="M180,280 Q160,215 190,160 Q210,105 175,55 Q195,105 175,160 Q150,215 180,280 Z" fill="url(#kelpGrad3)" />
+            </g>
+
+            <!-- Algas Cluster 2 (Centro-Esquerda) -->
+            <g class="alga-group sway-reverse" style="transform-origin: 360px 280px;">
+                <path d="M360,280 Q335,205 375,145 Q395,85 355,25 Q375,85 355,145 Q325,205 360,280 Z" fill="url(#kelpGrad2)" />
+                <path d="M375,145 Q415,125 405,95 Q370,115 375,145 Z" fill="url(#kelpGrad2)" />
+            </g>
+            <g class="alga-group sway-slow" style="transform-origin: 415px 280px;">
+                <path d="M415,280 Q440,210 405,155 Q385,95 430,45 Q400,105 420,155 Q450,210 415,280 Z" fill="url(#kelpGrad1)" />
+                <path d="M405,155 Q365,135 375,105 Q405,125 405,155 Z" fill="url(#kelpGrad1)" />
+            </g>
+
+            <!-- Algas Cluster 3 (Centro) -->
+            <g class="alga-group sway-medium" style="transform-origin: 680px 280px;">
+                <path d="M680,280 Q655,190 695,125 Q715,65 675,5 Q695,65 675,125 Q645,190 680,280 Z" fill="url(#kelpGrad1)" />
+                <path d="M695,125 Q740,105 730,75 Q690,95 695,125 Z" fill="url(#kelpGrad1)" />
+                <path d="M675,175 Q630,155 640,125 Q670,145 675,175 Z" fill="url(#kelpGrad1)" />
+            </g>
+            <g class="alga-group sway-fast" style="transform-origin: 740px 280px;">
+                <path d="M740,280 Q765,205 730,145 Q710,85 755,35 Q725,95 745,145 Q775,205 740,280 Z" fill="url(#kelpGrad3)" />
+                <path d="M730,145 Q690,125 700,95 Q730,115 730,145 Z" fill="url(#kelpGrad3)" />
+            </g>
+
+            <!-- Algas Cluster 4 (Centro-Direita) -->
+            <g class="alga-group sway-reverse" style="transform-origin: 1020px 280px;">
+                <path d="M1020,280 Q995,205 1035,140 Q1055,80 1015,20 Q1035,80 1015,140 Q985,205 1020,280 Z" fill="url(#kelpGrad2)" />
+                <path d="M1035,140 Q1080,120 1070,90 Q1030,110 1035,140 Z" fill="url(#kelpGrad2)" />
+            </g>
+            <g class="alga-group sway-slow" style="transform-origin: 1085px 280px;">
+                <path d="M1085,280 Q1110,210 1075,155 Q1055,95 1100,45 Q1070,105 1090,155 Q1120,210 1085,280 Z" fill="url(#kelpGrad1)" />
+                <path d="M1075,155 Q1035,135 1045,105 Q1075,125 1075,155 Z" fill="url(#kelpGrad1)" />
+            </g>
+
+            <!-- Algas Cluster 5 (Canto Direito) -->
+            <g class="alga-group sway-medium" style="transform-origin: 1320px 280px;">
+                <path d="M1320,280 Q1295,190 1335,125 Q1355,65 1315,5 Q1335,65 1315,125 Q1285,190 1320,280 Z" fill="url(#kelpGrad1)" />
+                <path d="M1335,125 Q1380,105 1370,75 Q1330,95 1335,125 Z" fill="url(#kelpGrad1)" />
+                <path d="M1315,175 Q1270,155 1280,125 Q1310,145 1315,175 Z" fill="url(#kelpGrad1)" />
+            </g>
+            <g class="alga-group sway-fast" style="transform-origin: 1385px 280px;">
+                <path d="M1385,280 Q1410,205 1375,145 Q1355,85 1400,35 Q1370,95 1390,145 Q1420,205 1385,280 Z" fill="url(#kelpGrad2)" />
+                <path d="M1375,145 Q1335,125 1345,95 Q1375,115 1375,145 Z" fill="url(#kelpGrad2)" />
+            </g>
+        </svg>
+
+        <!-- Bolhas Submarinas Subindo do Fundo do Mar -->
+        <div class="sea-bubbles">
+            <span class="bubble b1"></span>
+            <span class="bubble b2"></span>
+            <span class="bubble b3"></span>
+            <span class="bubble b4"></span>
+            <span class="bubble b5"></span>
+            <span class="bubble b6"></span>
+        </div>
+    </div>
+
+    <!-- Container dos peixinhos animados dinamicamente -->
+    <div id="fish-container" aria-hidden="true"></div>
+
+    <!-- HEADER: Barra de navegação moderna e responsiva -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#home" class="brand-logo" aria-label="Voltar ao início">
+                <span class="brand-name">Conceição Ramos</span>
+                <span class="brand-badge">Front-end</span>
+            </a>
+
+            <!-- Navegação Desktop -->
+            <nav class="desktop-nav" aria-label="Navegação principal">
+                <a href="#home" class="nav-link active">Início</a>
+                
+                <!-- Dropdown de Projetos -->
                 <div class="dropdown">
-                    <a href="projetos.html" class="dropbtn">Projetos</a>
+                    <a href="#projetos" class="nav-link dropbtn">
+                        Projetos
+                        <svg class="dropdown-chevron" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
                     <div class="dropdown-content">
-                        <a href="https://conceicao13c.github.io/AESupportech/">AESupportech</a>
-                        <a href=" https://conceicao13c.github.io/QuizParaProgramadores/">Quiz para Programadores</a>
-                        <a href="https://conceicao13c.github.io/ListaDeTarefas/">Lista de Tarefas</a>
+                        <a href="https://abra.tec.br" target="_blank" rel="noopener noreferrer" class="dropdown-item featured-item">
+                            <div class="item-title">
+                                <span>ABRATEC</span>
+                                <span class="tag-pill">Destaque</span>
+                            </div>
+                            <span class="item-sub">abra.tec.br</span>
+                        </a>
+                        <a href="https://conceicao13c.github.io/AESupportech/" target="_blank" rel="noopener noreferrer" class="dropdown-item">
+                            <div class="item-title">AESupportech</div>
+                            <span class="item-sub">Suporte & Soluções TI</span>
+                        </a>
+                        <a href="https://conceicao13c.github.io/QuizParaProgramadores/" target="_blank" rel="noopener noreferrer" class="dropdown-item">
+                            <div class="item-title">Quiz para Programadores</div>
+                            <span class="item-sub">Game interativo</span>
+                        </a>
+                        <a href="https://conceicao13c.github.io/ListaDeTarefas/" target="_blank" rel="noopener noreferrer" class="dropdown-item">
+                            <div class="item-title">Lista de Tarefas</div>
+                            <span class="item-sub">App To-Do com Storage</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#projetos" class="dropdown-item all-projects">
+                            <span>Ver todos os projetos</span>
+                            <span class="arrow-right">→</span>
+                        </a>
                     </div>
                 </div>
-                <a href="contato.html">Sobre mim</a>
-                <a href="contato.html">Contato</a>
+
+                <a href="#sobre" class="nav-link">Sobre mim</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
+
+            <!-- Botão CTA rápido no header -->
+            <div class="header-actions">
+                <a href="https://wa.me/551195384772" target="_blank" rel="noopener noreferrer" class="btn-header">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
+                    <span>Falar Comigo</span>
+                </a>
+
+                <!-- Botão Hamburger para Mobile -->
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menu de navegação" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Drawer -->
+        <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+            <nav class="mobile-nav">
+                <a href="#home" class="mobile-link">Início</a>
+                <a href="#projetos" class="mobile-link">Projetos</a>
+                <div class="mobile-sublinks">
+                    <a href="https://abra.tec.br" target="_blank" rel="noopener noreferrer" class="mobile-sublink featured">
+                        ⭐ ABRATEC (abra.tec.br)
+                    </a>
+                    <a href="https://conceicao13c.github.io/AESupportech/" target="_blank" rel="noopener noreferrer" class="mobile-sublink">
+                        AESupportech
+                    </a>
+                    <a href="https://conceicao13c.github.io/QuizParaProgramadores/" target="_blank" rel="noopener noreferrer" class="mobile-sublink">
+                        Quiz para Programadores
+                    </a>
+                    <a href="https://conceicao13c.github.io/ListaDeTarefas/" target="_blank" rel="noopener noreferrer" class="mobile-sublink">
+                        Lista de Tarefas
+                    </a>
+                </div>
+                <a href="#sobre" class="mobile-link">Sobre mim</a>
+                <a href="#contato" class="mobile-link">Contato</a>
+                
+                <a href="https://wa.me/5511975384772" target="_blank" rel="noopener noreferrer" class="btn-primary mobile-cta">
+                    Conversar no WhatsApp
+                </a>
             </nav>
         </div>
     </header>
 
-    <!-- MAIN: área principal da página -->
+    <!-- CONTEÚDO PRINCIPAL -->
     <main>
-        <!--
-          Elementos de efeito: .fish
-          - São elementos vazios (`<div class="fish"></div>`) usados para renderizar os peixinhos
-          - O `script.js` posiciona e anima estes elementos. Quantidade atual: 8 (pode ser ajustada)
-        -->
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <div class="fish"></div>
-        <!-- Entrada principal: texto à esquerda, imagem à direita -->
-        <div id="entrada">
-            <div class="texto">
-                <h1>Olá, sou Desenvolvedora Front-end</h1>
-                <!-- Parágrafo de apresentação -->
-                <p class="apresentacao"> Prazer, me chamo Conceição Ramos. Desenvolvo interfaces, resolvo problemas e transformo ideias em código. Explore meus projetos!</p>
-            </div>
+        <!-- SEÇÃO HERO / APRESENTAÇÃO -->
+        <section id="home" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-text-col">
+                    <div class="status-pill">
+                        <span class="status-dot"></span>
+                        <span>Disponível para novos projetos</span>
+                    </div>
 
-            <!-- Figura responsiva: usa <picture> para trocar imagens conforme largura -->
-            <figure>
-                <picture>
-                    <source media="(max-width:750px)" srcset="img/portifolio3.png">
-                    <!-- imagem para dispositivos pequenos -->
-                    <source media="(max-width:1050px)" srcset="img/portifolio2.png">
-                    <!-- imagem para dispositivos médios -->
-                    <img src="img/portifolio1.png" alt="foto de perfil grande">
-                </picture>
-            </figure>
-        </div>
+                    <h1 class="hero-title">
+                        Olá, eu sou a <br>
+                        <span class="gradient-text">Conceição Ramos</span>
+                    </h1>
+
+                    <p class="hero-role">Desenvolvedora Front-end</p>
+
+                    <p class="hero-description">
+                        Desenvolvo interfaces modernas, intuitivas e de alta performance. 
+                        Transformo conceitos e regras de negócio em código limpo, elegante e 100% responsivo para qualquer tamanho de tela.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#projetos" class="btn-primary">
+                            <span>Explorar Projetos</span>
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a href="#contato" class="btn-secondary">
+                            <span>Entrar em Contato</span>
+                        </a>
+                    </div>
+
+                    <!-- Redes Rápidas -->
+                    <div class="hero-socials">
+                        <span class="socials-label">Conecte-se:</span>
+                        <a href="https://github.com/conceicao13c" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Perfil no GitHub">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/5511939503210" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Conversar no WhatsApp">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                        </a>
+                        <a href="mailto:conceicao13c@gmail.com" class="social-icon" aria-label="Enviar e-mail">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna de Imagem com Design Moderno -->
+                <div class="hero-image-col">
+                    <div class="profile-card-wrapper">
+                        <div class="profile-glow"></div>
+                        <figure class="profile-figure">
+                            <picture>
+                                <source media="(max-width: 600px)" srcset="img/portifolio3.png">
+                                <source media="(max-width: 1024px)" srcset="img/portifolio2.png">
+                                <img src="img/portifolio1.png" alt="Foto de perfil de Conceição Ramos" class="profile-img">
+                            </picture>
+                        </figure>
+
+                        <!-- Badges Flutuantes -->
+                        <div class="floating-badge badge-top">
+                            <span class="badge-icon">⚡</span>
+                            <div>
+                                <span class="badge-title">Front-end</span>
+                                <span class="badge-sub">Interfaces Vivas</span>
+                            </div>
+                        </div>
+
+                        <div class="floating-badge badge-bottom">
+                            <span class="badge-icon">🌐</span>
+                            <div>
+                                <span class="badge-title">Web & Mobile</span>
+                                <span class="badge-sub">100% Responsivo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO PROJETOS -->
+        <section id="projetos" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Portfólio em Ação</span>
+                    <h2 class="section-title">Projetos em Destaque</h2>
+                    <p class="section-description">
+                        Conheça algumas das soluções web, aplicações interativas e sites institucionais que desenvolvi.
+                    </p>
+                </div>
+
+                <!-- CARD DE DESTAQUE: ABRATEC -->
+                <article class="featured-project-card">
+                    <div class="project-spotlight-tag">⭐ Projeto em Destaque</div>
+                    <div class="featured-grid">
+                        <div class="featured-info">
+                            <div class="featured-brand">
+                                <div class="brand-badge-circle">
+                                    <img src="img/abratec.png" alt="Logo ABRATEC" class="abratec-logo">
+                                </div>
+                                <div>
+                                    <h3 class="featured-title">ABRATEC — Engenharia & Manutenção Predial</h3>
+                                    <a href="https://abra.tec.br" target="_blank" rel="noopener noreferrer" class="project-domain-link">
+                                        abra.tec.br ↗
+                                    </a>
+                                </div>
+                            </div>
+
+                            <p class="featured-text">
+                                Desenvolvimento completo do website institucional da <strong>ABRATEC</strong>, empresa especializada em manutenção preventiva e corretiva predial, grupos geradores e engenharia de segurança contra incêndio (AVCB).
+                            </p>
+                            
+                            <p class="featured-text">
+                                O projeto conta com arquitetura modular, catálogo interativo de soluções técnicas, apresentação detalhada de cases de sucesso em condomínios e empreendimentos comerciais de grande porte, além de canais diretos de atendimento integrados e performance otimizada para dispositivos móveis.
+                            </p>
+
+                            <div class="tech-tags">
+                                <span class="tag">HTML5 Semântico</span>
+                                <span class="tag">CSS3 Moderno</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Design Responsivo</span>
+                                <span class="tag">UI / UX</span>
+                                <span class="tag">Cases & Portfólio</span>
+                            </div>
+
+                            <div class="featured-actions">
+                                <a href="https://abra.tec.br" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                                    <span>Acessar abra.tec.br</span>
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="featured-preview">
+                            <div class="browser-frame">
+                                <div class="browser-header">
+                                    <span class="browser-dot red"></span>
+                                    <span class="browser-dot yellow"></span>
+                                    <span class="browser-dot green"></span>
+                                    <span class="browser-address">https://abra.tec.br</span>
+                                </div>
+                                <div class="browser-content">
+                                    <div class="abratec-visual-mockup">
+                                        <img src="img/abratec.png" alt="Logo ABRATEC" class="mockup-logo">
+                                        <h4>Manutenção & Engenharia com Excelência</h4>
+                                        <p>Segurança, eficiência técnica e valorização de patrimônio.</p>
+                                        <div class="mockup-badges">
+                                            <span>Grupos Geradores</span>
+                                            <span>Sistemas de Incêndio</span>
+                                            <span>Laudos AVCB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- GRID COM DEMAIS PROJETOS -->
+                <div class="projects-grid">
+                    <!-- PROJETO 1: AESupportech -->
+                    <article class="project-card">
+                        <div class="card-top">
+                            <div class="card-icon">💻</div>
+                            <div class="card-links">
+                                <a href="https://conceicao13c.github.io/AESupportech/" target="_blank" rel="noopener noreferrer" aria-label="Abrir projeto AESupportech" class="link-btn">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="card-title">AESupportech</h3>
+                        <p class="card-desc">
+                            Plataforma web para empresa de suporte técnico corporativo e soluções em TI. Apresenta catálogo de serviços, proposta de valor, formulário interativo de contato e atendimento ágil.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Front-end</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://conceicao13c.github.io/AESupportech/" target="_blank" rel="noopener noreferrer" class="card-link">
+                                Ver Projeto <span>→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- PROJETO 2: Quiz para Programadores -->
+                    <article class="project-card">
+                        <div class="card-top">
+                            <div class="card-icon">🧠</div>
+                            <div class="card-links">
+                                <a href="https://conceicao13c.github.io/QuizParaProgramadores/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Quiz para Programadores" class="link-btn">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="card-title">Quiz para Programadores</h3>
+                        <p class="card-desc">
+                            Jogo interativo desenvolvido para testar conhecimentos em lógica de programação e tecnologias web. Conta com sistema de pontuação dinâmica, feedback em tempo real e interface lúdica.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tag">JavaScript ES6</span>
+                            <span class="tag">DOM API</span>
+                            <span class="tag">CSS Animations</span>
+                            <span class="tag">Gamificação</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://conceicao13c.github.io/QuizParaProgramadores/" target="_blank" rel="noopener noreferrer" class="card-link">
+                                Jogar Quiz <span>→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- PROJETO 3: Lista de Tarefas -->
+                    <article class="project-card">
+                        <div class="card-top">
+                            <div class="card-icon">📝</div>
+                            <div class="card-links">
+                                <a href="https://conceicao13c.github.io/ListaDeTarefas/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Lista de Tarefas" class="link-btn">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="card-title">Lista de Tarefas</h3>
+                        <p class="card-desc">
+                            Aplicação de produtividade para gerenciamento diário de atividades. Permite inclusão, edição, marcação de conclusão e persistência de dados localmente via LocalStorage do navegador.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">LocalStorage</span>
+                            <span class="tag">CSS Responsivo</span>
+                            <span class="tag">CRUD</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://conceicao13c.github.io/ListaDeTarefas/" target="_blank" rel="noopener noreferrer" class="card-link">
+                                Usar Aplicação <span>→</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO SOBRE MIM -->
+        <section id="sobre" class="about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text-content">
+                        <span class="section-tag">Conheça minha trajetória</span>
+                        <h2 class="section-title">Sobre Mim</h2>
+                        <p class="about-lead">
+                            Olá! Me chamo <strong>Conceição Ramos</strong>. Sou desenvolvedora front-end focada em construir experiências digitais eficientes, acessíveis e visivelmente marcantes.
+                        </p>
+                        <p class="about-body">
+                            Minha paixão pela tecnologia une resolução analítica de problemas, design funcional e código de qualidade. Atuo no desenvolvimento de websites institucionais, sistemas de gestão e aplicações web interativas, garantindo que cada linha de código resulte em agilidade, fidelidade visual e facilidade de navegação para o usuário final.
+                        </p>
+                        <p class="about-body">
+                            Tenho constante entusiasmo por aprender novas abordagens, aprimorar a arquitetura de projetos e entregar soluções que gerem valor real para clientes e negócios.
+                        </p>
+
+                        <!-- Destaques em números -->
+                        <div class="stats-row">
+                            <div class="stat-card">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Foco em Responsividade</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">Clean Code</span>
+                                <span class="stat-label">Semântica & Performance</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">UI / UX</span>
+                                <span class="stat-label">Design & Usabilidade</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card de Habilidades Técnicas -->
+                    <div class="skills-card">
+                        <h3 class="skills-title">Competências & Habilidades</h3>
+
+                        <div class="skills-group">
+                            <span class="skills-group-name">Desenvolvimento Front-end</span>
+                            <div class="tech-tags">
+                                <span class="tag">HTML5 Semântico</span>
+                                <span class="tag">CSS3 Moderno</span>
+                                <span class="tag">Flexbox & CSS Grid</span>
+                                <span class="tag">JavaScript (ES6+)</span>
+                                <span class="tag">DOM Manipulation</span>
+                                <span class="tag">Design Responsivo</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-group">
+                            <span class="skills-group-name">Metodologias & Práticas</span>
+                            <div class="tech-tags">
+                                <span class="tag">Mobile-First</span>
+                                <span class="tag">Git & GitHub</span>
+                                <span class="tag">Acessibilidade Web (a11y)</span>
+                                <span class="tag">Otimização de Performance</span>
+                                <span class="tag">Cross-Browser</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-group">
+                            <span class="skills-group-name">Diferenciais & Soluções</span>
+                            <div class="tech-tags">
+                                <span class="tag">Sistemas ERP / Corporativos</span>
+                                <span class="tag">Resolução de Problemas</span>
+                                <span class="tag">Atenção a Detalhes</span>
+                                <span class="tag">Comunicação Clara</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO CONTATO -->
+        <section id="contato" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Vamos conversar?</span>
+                    <h2 class="section-title">Entre em Contato</h2>
+                    <p class="section-description">
+                        Estou aberta a oportunidades de trabalho, projetos freelance ou parcerias. Escolha o canal de sua preferência!
+                    </p>
+                </div>
+
+                <div class="contact-cards-grid">
+                    <!-- WhatsApp Card -->
+                    <a href="https://wa.me/5511939503210" target="_blank" rel="noopener noreferrer" class="contact-card whatsapp">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                        </div>
+                        <div class="contact-info">
+                            <span class="contact-title">WhatsApp</span>
+                            <span class="contact-value">(11) 93950-3210</span>
+                            <span class="contact-action">Iniciar conversa ↗</span>
+                        </div>
+                    </a>
+
+                    <!-- E-mail Card -->
+                    <div class="contact-card email" id="copy-email-card" role="button" tabindex="0" title="Clique para copiar o e-mail">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="contact-info">
+                            <span class="contact-title">E-mail</span>
+                            <span class="contact-value">conceicao13c@gmail.com</span>
+                            <span class="contact-action" id="copy-status-text">Clique para copiar ou abrir ↗</span>
+                        </div>
+                    </div>
+
+                    <!-- GitHub Card -->
+                    <a href="https://github.com/conceicao13c" target="_blank" rel="noopener noreferrer" class="contact-card github">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-info">
+                            <span class="contact-title">GitHub</span>
+                            <span class="contact-value">github.com/conceicao13c</span>
+                            <span class="contact-action">Ver repositórios ↗</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- RODAPÉ -->
-    <footer>
-        <p>© 2025 Conceição Ramos. Todos os direitos reservados.</p>
+    <!-- RODAPÉ MODERNO -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-left">
+                <span class="footer-name">Conceição Ramos</span>
+                <span class="footer-tagline">Desenvolvedora Front-end</span>
+            </div>
+
+            <div class="footer-center">
+                <p>© 2026 Conceição Ramos. Todos os direitos reservados.</p>
+            </div>
+
+            <div class="footer-right">
+                <a href="#home" class="back-to-top" aria-label="Voltar ao topo da página">
+                    <span>Topo</span>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="18 15 12 9 6 15"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Script que controla o comportamento dos peixinhos (.fish) -->
+    <!-- Toast de Notificação -->
+    <div id="toast" class="toast" role="alert" aria-live="polite">E-mail copiado com sucesso!</div>
+
+    <!-- Script de controle das animações, peixinhos e interações -->
     <script src="script.js"></script>
 </body>
-</html>
 </html>
